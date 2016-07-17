@@ -1,0 +1,27 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    app.form.registration:
+        class: "%form.type.registration%"
+        tags:
+            - { name: form.type, alias: app_user_registration }
+
+    app.form.post:
+        class: "%form.type.post%"
+        arguments: ["@translator"]
+        tags:
+            - { name: form.type, alias: app_form_post }
+
+    app.post_voter:
+        class: AppBundle\Security\PostVoter
+        arguments: ['@security.access.decision_manager']
+        tags:
+            - { name: security.voter }
+        public: false

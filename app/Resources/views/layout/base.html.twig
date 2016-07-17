@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{{ 'meta.title.home'|trans }}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
+
+        {% stylesheets filter='scssphp' output='css/scss.css'
+            '@AppBundle/Resources/scss/base.scss'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+            <div class="container ">
+                <div class="header clearfix">
+                    <nav>
+                        <ul class="nav nav-pills pull-right">
+                            <li role="presentation"{% if app.request.attributes.get('_route') == 'home' %} class="active"{% endif %}><a href="{{ path('home') }}">{{ 'menu.blog'|trans }}</a></li>
+                            <li role="presentation"{% if app.request.attributes.get('_route') == 'blog_create' %} class="active"{% endif %}><a href="{{ path('blog_create') }}">{{ 'menu.create'|trans }}</a></li>
+                            {% if app.user %}
+                            <li role="presentation"><a href="{{ path('fos_user_security_logout') }}">{{ 'menu.logout'|trans }}</a></li>
+                            {% else %}
+                            <li role="presentation"{% if app.request.attributes.get('_route') == 'fos_user_registration_register' %} class="active"{% endif %}><a href="{{ path('fos_user_registration_register') }}">{{ 'menu.register'|trans }}</a></li>
+                            <li role="presentation"{% if app.request.attributes.get('_route') == 'fos_user_security_login' %} class="active"{% endif %}><a href="{{ path('fos_user_security_login') }}">{{ 'menu.login'|trans }}</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    <h3 class="text-muted">{{ 'meta.title.home'|trans }}</h3>
+                </div>
+                {% include 'partials/flash.html.twig' %}
+                {% block content %}{% endblock %}
+                {% include 'layout/footer.html.twig' %}
+            </div>
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

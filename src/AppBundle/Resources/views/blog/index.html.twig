@@ -1,0 +1,21 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block content %}
+    {% for post in posts %}
+        <h2 class="page-header">
+            <a href="{{ path('blog_show', {'slug': post.slug}) }}">
+            {{ post.title }}
+            </a>
+        </h2>
+
+        {% include 'AppBundle:blog:_post_info.html.twig' %}
+
+        <div class="panel panel-default">
+            <div class="panel-body panel-post">
+                <blockquote>
+                    {{ post.text|raw|nl2br }}
+                </blockquote>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

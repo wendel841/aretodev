@@ -1,0 +1,25 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}
+	{{ 'meta.title.blog_create'|trans }}
+{% endblock %}
+
+{% block content %}
+	{{ form_start(form) }}
+	{{ form_errors(form) }}
+
+	{{ form_row(form.title) }}
+
+	{{ form_row(form.slug) }}
+
+	{{ form_row(form.text) }}
+
+	{{ form_row(form.save, { 'attr': {
+		'class': 'btn btn-primary'
+	}
+	}) }}
+
+	{{ form_end(form) }}
+{% endblock %}

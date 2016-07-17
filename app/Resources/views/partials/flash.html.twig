@@ -1,0 +1,13 @@
+{% set flash_messages = app.session.flashBag.get('notice') %}
+
+{% if flash_messages %}
+<div class="alert alert-danger">
+	<ul class="list list-unstyled">
+		{% for flash_message in flash_messages %}
+			<li>
+				{{ flash_message }}
+			</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endif %}

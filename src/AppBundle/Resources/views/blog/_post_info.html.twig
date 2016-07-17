@@ -1,0 +1,20 @@
+<div class="post-info clearfix">
+	<div class="pull-left">
+		<i class="fa fa-calendar" aria-hidden="true"></i>
+		{{ post.getCreatedAt()|date('Y-m-d H:i') }}
+		<i class="fa fa-user" aria-hidden="true"></i>
+		{{ post.user.username }}
+	</div>
+	<div class="pull-right">
+		{% if (app.user and app.user.id == post.user.id) or is_granted('ROLE_ADMIN') %}
+			<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+			<a href="{{ path('blog_edit', {
+				'slug': post.slug
+			}) }}">{{ 'post.label.edit'|trans }}</a>
+			<i class="fa fa-times" aria-hidden="true"></i>
+			<a href="{{ path('blog_delete', {
+				'slug': post.slug
+			}) }}">{{ 'post.label.delete'|trans }}</a>
+		{% endif %}
+	</div>
+</div>

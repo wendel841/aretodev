@@ -1,0 +1,9 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block title %}{{ 'menu.register'|trans }} - {{ parent() }}{% endblock %}
+
+{% block fos_user_content %}
+{% include "auth/register_content.html.twig" %}
+{% endblock fos_user_content %}

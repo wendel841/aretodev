@@ -1,0 +1,11 @@
+post.label.edit: Edit
+post.label.delete: Delete
+post.label.save: Save post
+post.error.unique_slug: Slug must be unique!
+menu.blog: Blog
+menu.create: Create
+menu.register: Register
+menu.login: Login
+menu.logout: Logout
+meta.title.home: Symfony3 Blog
+meta.title.blog_create: Create new post

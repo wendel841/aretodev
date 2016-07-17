@@ -1,0 +1,29 @@
+.header {
+  margin-top: 20px;
+}
+
+.post-info {
+  margin-bottom: 10px;
+}
+
+.page-header:first-child {
+  margin-top: 0;
+}
+
+.panel-post {
+  blockquote {
+    margin-bottom: 0;
+  }
+}
+
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
